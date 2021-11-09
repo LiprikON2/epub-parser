@@ -103,7 +103,6 @@ const parseHTML = (HTMLString: string, config: ParseHTMLConfig = {}) => {
             return makeTextObject()
           },
           () => {
-            const style = node.style.cssText
             return {
               tag: 'p',
               children: [makeTextObject()],

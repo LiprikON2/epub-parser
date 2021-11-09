@@ -5,7 +5,7 @@ import { HtmlNodeObject, GeneralObject } from './types'
 
 const OMITTED_TAGS = ['head', 'input', 'textarea', 'script', 'style', 'svg']
 const UNWRAP_TAGS = ['body', 'html', 'div', 'span']
-const PICKED_ATTRS = ['href', 'src', 'id']
+const PICKED_ATTRS = ['href', 'src', 'id', 'style', 'class']
 
 /**
  * recursivelyReadParent
@@ -52,7 +52,8 @@ const parseHTML = (HTMLString: string, config: ParseHTMLConfig = {}) => {
     },
     transformer(node, children) {
       if (node.nodeType === 1) {
-        const style = node.style
+        // const style = node.style.cssText
+        // console.log('style!!', style)
         const tag = node.tagName.toLowerCase()
         const attrs: GeneralObject = {}
 
@@ -75,7 +76,7 @@ const parseHTML = (HTMLString: string, config: ParseHTMLConfig = {}) => {
           attrs[attr] = attrVal
         })
 
-        return { tag, type: 1, children, attrs, style }
+        return { tag, type: 1, children, attrs }
       } else {
         const text = node.textContent.trim()
         if (!text) {
@@ -101,11 +102,10 @@ const parseHTML = (HTMLString: string, config: ParseHTMLConfig = {}) => {
             return makeTextObject()
           },
           () => {
-            const style = node.style
+            const style = node.style.cssText
             return {
               tag: 'p',
               children: [makeTextObject()],
-              style,
             }
           },
         )

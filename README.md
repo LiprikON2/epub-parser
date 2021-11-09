@@ -1,6 +1,6 @@
-# 📖 epub-parser
+# 📖 epub-parser (fork)
 
-> A powerful yet easy-to-use epub parser
+> A (fork of) powerful yet easy-to-use epub parser
 
 [![npm version](https://badge.fury.io/js/%40gxl%2Fepub-parser.svg)](https://badge.fury.io/js/%40gxl%2Fepub-parser)
 ![Test](https://github.com/gaoxiaoliangz/epub-parser/workflows/Test/badge.svg)

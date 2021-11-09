@@ -3,7 +3,7 @@ import _ from 'lodash'
 import { traverseNestedObject } from './utils'
 import { HtmlNodeObject, GeneralObject } from './types'
 
-const OMITTED_TAGS = ['head', 'input', 'textarea', 'script', 'style', 'svg']
+const OMITTED_TAGS = ['input', 'textarea', 'script', 'style', 'svg']
 const UNWRAP_TAGS = ['body', 'html']
 const PICKED_ATTRS = ['href', 'src', 'id', 'style', 'class']
 
@@ -39,10 +39,11 @@ const recursivelyReadParent = (
 export interface ParseHTMLConfig {
   resolveSrc?: (src: string) => string
   resolveHref?: (href: string) => string
+  resolveCSS?: (href: string) => string
 }
 const parseHTML = (HTMLString: string, config: ParseHTMLConfig = {}) => {
   const rootNode = new JSDOM(HTMLString).window.document.documentElement
-  const { resolveHref, resolveSrc } = config
+  const { resolveHref, resolveSrc, resolveCSS } = config
 
   // initial parse
   return traverseNestedObject(rootNode, {
@@ -65,8 +66,11 @@ const parseHTML = (HTMLString: string, config: ParseHTMLConfig = {}) => {
 
         PICKED_ATTRS.forEach((attr) => {
           let attrVal = node.getAttribute(attr) || undefined
-          if (attrVal && attr === 'href' && resolveHref) {
+          if (attrVal && attr === 'href' && tag !== 'link' && resolveHref) {
             attrVal = resolveHref(attrVal)
+          }
+          if (attrVal && attr === 'href' && tag === 'link' && resolveCSS) {
+            attrVal = resolveCSS(attrVal)
           }
           if (attrVal && attr === 'src' && resolveSrc) {
             attrVal = resolveSrc(attrVal)
@@ -103,10 +107,7 @@ const parseHTML = (HTMLString: string, config: ParseHTMLConfig = {}) => {
             return makeTextObject()
           },
           () => {
-            return {
-              tag: 'p',
-              children: [makeTextObject()],
-            }
+            return makeTextObject()
           },
         )
       }

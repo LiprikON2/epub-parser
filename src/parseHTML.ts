@@ -4,7 +4,7 @@ import { traverseNestedObject } from './utils'
 import { HtmlNodeObject, GeneralObject } from './types'
 
 const OMITTED_TAGS = ['head', 'input', 'textarea', 'script', 'style', 'svg']
-const UNWRAP_TAGS = ['body', 'html', 'div', 'span']
+const UNWRAP_TAGS = ['body', 'html']
 const PICKED_ATTRS = ['href', 'src', 'id', 'style', 'class']
 
 /**

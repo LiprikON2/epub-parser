@@ -15,7 +15,7 @@ parseEpub('../../fixtures/classroom.epub').then((result) => {
     // console.log(result.sections[idx].toMarkdown())
     // console.log('toHtmlObjects')
     const htmlObjects = result.sections[idx].toHtmlObjects()
-    console.log(JSON.stringify(htmlObjects))
+    console.log(JSON.stringify(htmlObjects[2]))
   }
 
   showSection(6)

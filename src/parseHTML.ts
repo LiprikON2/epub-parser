@@ -52,8 +52,6 @@ const parseHTML = (HTMLString: string, config: ParseHTMLConfig = {}) => {
     },
     transformer(node, children) {
       if (node.nodeType === 1) {
-        // const style = node.style.cssText
-        // console.log('style!!', style)
         const tag = node.tagName.toLowerCase()
         const attrs: GeneralObject = {}
 
@@ -72,6 +70,9 @@ const parseHTML = (HTMLString: string, config: ParseHTMLConfig = {}) => {
           }
           if (attrVal && attr === 'src' && resolveSrc) {
             attrVal = resolveSrc(attrVal)
+          }
+          if (attr === 'class') {
+            attr = 'className'
           }
           attrs[attr] = attrVal
         })

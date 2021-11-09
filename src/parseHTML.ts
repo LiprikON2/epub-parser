@@ -52,6 +52,7 @@ const parseHTML = (HTMLString: string, config: ParseHTMLConfig = {}) => {
     },
     transformer(node, children) {
       if (node.nodeType === 1) {
+        const style = node.style
         const tag = node.tagName.toLowerCase()
         const attrs: GeneralObject = {}
 
@@ -74,7 +75,7 @@ const parseHTML = (HTMLString: string, config: ParseHTMLConfig = {}) => {
           attrs[attr] = attrVal
         })
 
-        return { tag, type: 1, children, attrs }
+        return { tag, type: 1, children, attrs, style }
       } else {
         const text = node.textContent.trim()
         if (!text) {
@@ -100,9 +101,11 @@ const parseHTML = (HTMLString: string, config: ParseHTMLConfig = {}) => {
             return makeTextObject()
           },
           () => {
+            const style = node.style
             return {
               tag: 'p',
               children: [makeTextObject()],
+              style,
             }
           },
         )

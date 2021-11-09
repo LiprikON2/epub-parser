@@ -1,2 +1,5 @@
 node_modules
 lib
+package-lock.json
+classroom.epub
+yarn.lock

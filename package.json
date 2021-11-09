@@ -1,7 +1,7 @@
 {
-  "name": "@gxl/epub-parser",
-  "version": "2.0.4",
-  "description": "A powerful yet easy-to-use epub parser",
+  "name": "@liprikon/epub-parser",
+  "version": "2.0.5",
+  "description": "A (fork of) powerful yet easy-to-use epub parser",
   "main": "lib/index.js",
   "scripts": {
     "prebuild": "yarn clean",
@@ -38,7 +38,8 @@
     "lodash": "^4.17.15",
     "node-zip": "^1.1.1",
     "to-markdown": "^3.1.1",
-    "xml2js": "^0.4.19"
+    "xml2js": "^0.4.19",
+    "yarn": "^1.22.17"
   },
   "devDependencies": {
     "@types/express": "^4.17.1",

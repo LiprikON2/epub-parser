@@ -79,7 +79,7 @@ const parseHTML = (HTMLString: string, config: ParseHTMLConfig = {}) => {
 
         return { tag, type: 1, children, attrs }
       } else {
-        const text = node.textContent.trim()
+        const text = node.textContent
         if (!text) {
           return null
         }

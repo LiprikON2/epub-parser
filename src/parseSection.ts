@@ -73,10 +73,8 @@ export class Section {
       },
       resolveCSS: (href) => {
         if (isInternalUri(href)) {
-          const absolutePath = path.posix.resolve('/', href).substr(1)
-          const buffer = this._resourceResolver?.(absolutePath)?.asNodeBuffer()
-          const base64 = buffer.toString('base64')
-          return `data:text/css;base64,${base64}`
+          const absoluteHref = path.posix.resolve('/', href).substr(1)
+          return absoluteHref
         }
         return href
       },

@@ -75,9 +75,6 @@ const parseHTML = (HTMLString: string, config: ParseHTMLConfig = {}) => {
           if (attrVal && attr === 'src' && resolveSrc) {
             attrVal = resolveSrc(attrVal)
           }
-          if (attr === 'class') {
-            attr = 'className'
-          }
           attrs[attr] = attrVal
         })
 

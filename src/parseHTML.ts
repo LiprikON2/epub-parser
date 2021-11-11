@@ -3,7 +3,7 @@ import _ from 'lodash'
 import { traverseNestedObject } from './utils'
 import { HtmlNodeObject, GeneralObject } from './types'
 
-const OMITTED_TAGS = ['input', 'textarea', 'script', 'style', 'svg']
+const OMITTED_TAGS = ['input', 'textarea', 'script', 'svg']
 const UNWRAP_TAGS = ['body', 'html']
 const PICKED_ATTRS = ['href', 'src', 'id', 'style', 'class']
 

@@ -242,7 +242,10 @@ export class Epub {
 
     const styleItems = manifest.filter((item) => item['media-type'] === 'text/css')
     const styles = styleItems.map((item) => {
-      return { [item['href']]: this.resolve(item['href']) }
+      return {
+        href: item['href'],
+        ...this.resolve(item['href']),
+      }
     })
 
     // https://github.com/gaoxiaoliangz/epub-parser/issues/13

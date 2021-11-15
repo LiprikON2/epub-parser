@@ -3,20 +3,9 @@ import _ from 'lodash'
 import { traverseNestedObject } from './utils'
 import { HtmlNodeObject, GeneralObject } from './types'
 
-const OMITTED_TAGS = ['input', 'br', 'textarea', 'script']
+const OMITTED_TAGS = ['input', 'br', 'textarea', 'script', 'svg']
 const UNWRAP_TAGS = ['body', 'html']
-const PICKED_ATTRS = [
-  'href',
-  'xlink:href',
-  'src',
-  'id',
-  'style',
-  'class',
-  'hidden',
-  'alt',
-  'title',
-  'viewBox',
-]
+const PICKED_ATTRS = ['href', 'src', 'id', 'style', 'class', 'hidden', 'alt', 'title']
 
 /**
  * recursivelyReadParent
@@ -77,12 +66,7 @@ const parseHTML = (HTMLString: string, config: ParseHTMLConfig = {}) => {
 
         PICKED_ATTRS.forEach((attr) => {
           let attrVal = node.getAttribute(attr) || undefined
-          if (
-            attrVal &&
-            (attr === 'href' || attr === 'xlink:href') &&
-            tag !== 'link' &&
-            resolveHref
-          ) {
+          if (attrVal && attr === 'href' && tag !== 'link' && resolveHref) {
             attrVal = resolveHref(attrVal)
           }
           if (attrVal && attr === 'href' && tag === 'link' && resolveCSS) {

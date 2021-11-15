@@ -1,6 +1,6 @@
 {
   "name": "@liprikon/epub-parser",
-  "version": "2.0.20",
+  "version": "2.0.21",
   "description": "A (fork of) powerful yet easy-to-use epub parser",
   "main": "lib/index.js",
   "scripts": {

@@ -77,6 +77,9 @@ const parseHTML = (HTMLString: string, config: ParseHTMLConfig = {}) => {
 
         PICKED_ATTRS.forEach((attr) => {
           let attrVal = node.getAttribute(attr) || undefined
+          if (attr === 'xlink:href') {
+            attr = 'href'
+          }
           if (attrVal && attr === 'href' && tag !== 'link' && resolveHref) {
             attrVal = resolveHref(attrVal)
           }

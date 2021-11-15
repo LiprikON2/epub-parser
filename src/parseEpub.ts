@@ -251,14 +251,13 @@ export class Epub {
     // https://github.com/gaoxiaoliangz/epub-parser/issues/13
     // https://www.w3.org/publishing/epub32/epub-packages.html#sec-spine-elem
 
+    this._manifest = manifest
     const tocPath = (_.find(manifest, { id: tocID }) || {}).href
     if (tocPath) {
       const toc = await this._resolveXMLAsJsObject(tocPath)
       this._toc = toc
       this.structure = this._genStructure(toc)
     }
-
-    this._manifest = manifest
     this._content = content
     this._opfPath = opfPath
     this._spine = this._getSpine()

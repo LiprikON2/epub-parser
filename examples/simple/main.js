@@ -16,12 +16,12 @@ parseEpub('../../fixtures/classroom.epub').then((result) => {
     // console.log(result.sections[idx].toMarkdown())
     // console.log('toHtmlObjects')
     const htmlObjects = result.sections[idx].toHtmlObjects()
-    console.log(JSON.stringify(htmlObjects[0], null, 2))
+    // console.log(JSON.stringify(htmlObjects[0], null, 2))
     // console.log(htmlObjects)
   }
 
   //   showSection(6)
-  showSection(0)
+  showSection(1)
 
   // this section contains images which are converted to base64
   // showSection(4)

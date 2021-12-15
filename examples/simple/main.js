@@ -1,7 +1,7 @@
 // @ts-check
 const { parseEpub } = require('../../lib')
 
-parseEpub('../../fixtures/classroom.epub').then((result) => {
+parseEpub('../../fixtures/over.epub').then((result) => {
   //   console.log('result object has keys: ', Object.keys(result))
   //   console.log('book info', result.info)
   //   console.log('book styles', result.styles)
@@ -16,12 +16,13 @@ parseEpub('../../fixtures/classroom.epub').then((result) => {
     // console.log(result.sections[idx].toMarkdown())
     // console.log('toHtmlObjects')
     const htmlObjects = result.sections[idx].toHtmlObjects()
+    console.log(JSON.stringify(htmlObjects[3].children[1].children[1], null, 2))
+
     // console.log(JSON.stringify(htmlObjects[0], null, 2))
-    // console.log(htmlObjects)
   }
 
   //   showSection(6)
-  showSection(1)
+  showSection(8)
 
   // this section contains images which are converted to base64
   // showSection(4)

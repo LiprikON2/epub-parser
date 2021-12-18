@@ -115,13 +115,11 @@ export class Epub {
   }
 
   _resolveIdFromLink(href: string) {
-    console.log('got', href)
     const { name: tarName } = parseLink(href)
     const tarItem = _.find(this._manifest, (item) => {
       const { name } = parseLink(item.href)
       return name === tarName && ['application/xhtml+xml', 'text/html'].includes(item['media-type'])
     })
-    console.log('at last tarItem', tarItem)
     return _.get(tarItem, 'id')
   }
 

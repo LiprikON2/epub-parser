@@ -1,6 +1,7 @@
 import fs from 'fs'
 import xml2js from 'xml2js'
 import _ from 'lodash'
+import path from 'path'
 // @ts-ignore
 import nodeZip from 'node-zip'
 import parseLink from './parseLink'
@@ -37,20 +38,58 @@ const determineRoot = (opfPath: string) => {
   }
   return root
 }
+const getMultipleMetaTags = (collection: GeneralObject, tag: string) => {
+  const duplicateTags = Object.entries(collection).filter((item, index) => {
+    const key = item[0]
+    return key === tag
+  })
+  const values = duplicateTags.map((item) => item[1])
+  return values[0]
+}
 
-const parseMetadata = (metadata: GeneralObject[]) => {
+const getCoverImage = (href: string, that?: any) => {
+  const absolutePath = path.posix.resolve('/', href).substr(1)
+  const buffer = that.resolve?.(absolutePath)?.asNodeBuffer()
+  const base64 = buffer.toString('base64')
+  return `data:image/png;base64,${base64}`
+}
+
+const parseMetadata = (metadata: GeneralObject[], manifest?: string[], that?: any) => {
   const title = _.get(metadata[0], ['dc:title', 0]) as string
+  const languages = getMultipleMetaTags(metadata[0], 'dc:language') as string[]
+
+  const relations = getMultipleMetaTags(metadata[0], 'dc:relation') as string[]
+  const subjects = getMultipleMetaTags(metadata[0], 'dc:subject') as string[]
+  const publishers = getMultipleMetaTags(metadata[0], 'dc:publisher') as string[]
+  const contributors = getMultipleMetaTags(metadata[0], 'dc:contributor') as string[]
+  const coverages = getMultipleMetaTags(metadata[0], 'dc:coverage') as string[]
+  const rights = getMultipleMetaTags(metadata[0], 'dc:rights') as string[]
+  const sources = getMultipleMetaTags(metadata[0], 'dc:source') as string[]
+  const description = _.get(metadata[0], ['dc:description', 0]) as string
+  const date = _.get(metadata[0], ['dc:date', 0]) as string
   let author = _.get(metadata[0], ['dc:creator', 0]) as string
+
+  const coverItem = manifest?.find((item: any) => item?.['id'] === 'cover') as any
+  const cover = getCoverImage(coverItem['href'], that)
 
   if (typeof author === 'object') {
     author = _.get(author, ['_']) as string
   }
 
-  const publisher = _.get(metadata[0], ['dc:publisher', 0]) as string
   const meta = {
     title,
+    languages,
+    relations,
+    subjects,
+    publishers,
+    contributors,
+    coverages,
+    rights,
+    sources,
+    description,
+    date,
+    cover,
     author,
-    publisher,
   }
   return meta
 }
@@ -63,12 +102,23 @@ export class Epub {
   private _manifest?: any[]
   private _spine?: string[] // array of ids defined in manifest
   private _toc?: GeneralObject
+  private _nav?: GeneralObject
   private _metadata?: GeneralObject
   structure?: GeneralObject
   info?: {
     title: string
+    languages: string[]
+    relations: string[]
+    subjects: string[]
+    publishers: string[]
+    contributors: string[]
+    coverages: string[]
+    rights: string[]
+    sources: string[]
+    description: string
+    date: string
+    cover: string
     author: string
-    publisher: string
   }
   sections?: Section[]
   styles?: GeneralObject
@@ -258,11 +308,16 @@ export class Epub {
       this._toc = toc
       this.structure = this._genStructure(toc)
     }
+    const navPath = (_.find(manifest, { properties: 'nav' }) || {}).href
+    if (navPath) {
+      const nav = await this._resolveXMLAsJsObject(navPath)
+      this._nav = nav
+    }
     this._content = content
     this._opfPath = opfPath
     this._spine = this._getSpine()
     this._metadata = metadata
-    this.info = parseMetadata(metadata)
+    this.info = parseMetadata(metadata, manifest, this)
     this.sections = this._resolveSectionsFromSpine(expand)
     this.styles = styles
 

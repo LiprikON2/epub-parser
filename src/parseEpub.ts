@@ -43,8 +43,11 @@ const getMultipleMetaTags = (collection: GeneralObject, tag: string) => {
     const key = item[0]
     return key === tag
   })
-  const values = duplicateTags.map((item) => item[1])
-  return values[0]
+  let values = duplicateTags.map((item) => item[1])[0]
+  if (tag === 'dc:identifier') {
+    values = values.map((value: any) => value['_'])
+  }
+  return values
 }
 
 const getCoverImage = (href: string, that?: any) => {
@@ -56,6 +59,7 @@ const getCoverImage = (href: string, that?: any) => {
 
 const parseMetadata = (metadata: GeneralObject[], manifest?: string[], that?: any) => {
   const title = _.get(metadata[0], ['dc:title', 0]) as string
+  const identifiers = getMultipleMetaTags(metadata[0], 'dc:identifier') as string[]
   const languages = getMultipleMetaTags(metadata[0], 'dc:language') as string[]
 
   const relations = getMultipleMetaTags(metadata[0], 'dc:relation') as string[]
@@ -78,6 +82,7 @@ const parseMetadata = (metadata: GeneralObject[], manifest?: string[], that?: an
 
   const meta = {
     title,
+    identifiers,
     languages,
     relations,
     subjects,
@@ -107,6 +112,7 @@ export class Epub {
   structure?: GeneralObject
   info?: {
     title: string
+    identifiers: string[]
     languages: string[]
     relations: string[]
     subjects: string[]

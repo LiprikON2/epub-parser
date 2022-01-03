@@ -18,7 +18,7 @@ parseEpub('../../fixtures/classroom.epub').then((result) => {
     const htmlObjects = result.sections[idx].toHtmlObjects()
     // console.log(JSON.stringify(htmlObjects[3].children[1].children[1], null, 2))
     // console.log('result', JSON.stringify(result._nav.html.body, null, 2))
-    console.log('result', result.info)
+    // console.log('result', result.info)
 
     // console.log(JSON.stringify(htmlObjects[0], null, 2))
   }

@@ -57,6 +57,24 @@ const getCoverImage = (href: string, that?: any) => {
   return `data:image/png;base64,${base64}`
 }
 
+const getCoverItem = (metadata: GeneralObject[], manifest?: string[]) => {
+  let coverItem
+  coverItem = manifest?.find((item: any) => item?.['properties'] === 'cover-image') as any
+  if (!coverItem?.href) {
+    const metaTagsObj = getMultipleMetaTags(metadata[0], 'meta') as string[]
+    const metaTagObj = Object.entries(metaTagsObj).find((item: any) => {
+      const [index, metaTag] = item
+      return metaTag['$']?.['name'] === 'cover'
+    }) as any
+    if (metaTagObj) {
+      const metaCover = metaTagObj[1]['$']
+      coverItem = manifest?.find((item: any) => item?.['id'] === metaCover.content) as any
+    }
+  }
+
+  return coverItem
+}
+
 const parseMetadata = (metadata: GeneralObject[], manifest?: string[], that?: any) => {
   const title = _.get(metadata[0], ['dc:title', 0]) as string
   const identifiers = getMultipleMetaTags(metadata[0], 'dc:identifier') as string[]
@@ -73,8 +91,8 @@ const parseMetadata = (metadata: GeneralObject[], manifest?: string[], that?: an
   const date = _.get(metadata[0], ['dc:date', 0]) as string
   let author = _.get(metadata[0], ['dc:creator', 0]) as string
 
-  const coverItem = manifest?.find((item: any) => item?.['id'] === 'cover') as any
-  const cover = getCoverImage(coverItem['href'], that)
+  const coverItem = getCoverItem(metadata, manifest)
+  const cover = getCoverImage(coverItem?.['href'], that)
 
   if (typeof author === 'object') {
     author = _.get(author, ['_']) as string

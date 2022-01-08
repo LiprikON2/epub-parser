@@ -92,7 +92,7 @@ const parseMetadata = (metadata: GeneralObject[], manifest?: string[], that?: an
   let author = _.get(metadata[0], ['dc:creator', 0]) as string
 
   const coverItem = getCoverItem(metadata, manifest)
-  const cover = getCoverImage(coverItem?.['href'], that)
+  const cover = coverItem ? getCoverImage(coverItem?.['href'], that) : undefined
 
   if (typeof author === 'object') {
     author = _.get(author, ['_']) as string
@@ -129,20 +129,20 @@ export class Epub {
   private _metadata?: GeneralObject
   structure?: GeneralObject
   info?: {
-    title: string
-    identifiers: string[]
-    languages: string[]
-    relations: string[]
-    subjects: string[]
-    publishers: string[]
-    contributors: string[]
-    coverages: string[]
-    rights: string[]
-    sources: string[]
-    description: string
-    date: string
-    cover: string
-    author: string
+    title?: string
+    identifiers?: string[]
+    languages?: string[]
+    relations?: string[]
+    subjects?: string[]
+    publishers?: string[]
+    contributors?: string[]
+    coverages?: string[]
+    rights?: string[]
+    sources?: string[]
+    description?: string
+    date?: string
+    cover?: string
+    author?: string
   }
   sections?: Section[]
   styles?: GeneralObject

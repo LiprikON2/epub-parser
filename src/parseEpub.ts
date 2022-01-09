@@ -47,7 +47,7 @@ const getMultipleMetaTags = (collection: GeneralObject, tag: string) => {
   if (tag === 'dc:identifier') {
     values = values.map((value: any) => value['_'])
   }
-  return values
+  return values || []
 }
 
 const getCoverImage = (href: string, that?: any) => {

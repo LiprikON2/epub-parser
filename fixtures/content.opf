@@ -1,91 +1,35 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<package xmlns="http://www.idpf.org/2007/opf" unique-identifier="BookId" version="2.0">
-  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:opf="http://www.idpf.org/2007/opf">
-    <dc:title>Classroom of the Elite: Volume 1</dc:title>
-    <dc:creator opf:role="aut" opf:file-as="Kinugasa, Syougo">Syougo Kinugasa</dc:creator>
-    <dc:contributor>Tomoseshunsaku</dc:contributor>
-    <dc:identifier id="BookId">9781645051541</dc:identifier>
-    <dc:relation>http://sevenseasentertainment.com</dc:relation>
-    <dc:publisher>Seven Seas Entertainment</dc:publisher>
-    <dc:date>2018-12-15T05:00:00+00:00</dc:date>
-    <dc:subject>light novel</dc:subject>
-    <dc:subject>light novel2</dc:subject>
-    <dc:language>en</dc:language>
-    <dc:language>ru</dc:language>
-    <dc:identifier opf:scheme="calibre">475f3403-5a82-4edb-849d-d05337263a52</dc:identifier>
-    <meta name="cover" content="cover" />
-    <meta name="calibre:title_sort" content="Classroom of the Elite: Volume 1" />
-    <meta name="calibre:author_link_map" content="{&quot;Syougo Kinugasa&quot;: &quot;&quot;}" />
-    <meta xmlns="" name="BNContentKind" content="book" />
-  </metadata>
-  <manifest>
-    <item id="CoverPage_html" href="CoverPage.html" media-type="application/xhtml+xml" />
-    <item id="toc" href="TableOfContents.html" media-type="application/xhtml+xml" />
-    <item id="section-0001_html" href="section-0001.html" media-type="application/xhtml+xml" />
-    <item id="section-0002_html" href="section-0002.html" media-type="application/xhtml+xml" />
-    <item id="section-0003_html" href="section-0003.html" media-type="application/xhtml+xml" />
-    <item id="section-0004_html" href="section-0004.html" media-type="application/xhtml+xml" />
-    <item id="section-0005_html" href="section-0005.html" media-type="application/xhtml+xml" />
-    <item id="section-0006_html" href="section-0006.html" media-type="application/xhtml+xml" />
-    <item id="section-0007_html" href="section-0007.html" media-type="application/xhtml+xml" />
-    <item id="section-0008_html" href="section-0008.html" media-type="application/xhtml+xml" />
-    <item id="section-0009_html" href="section-0009.html" media-type="application/xhtml+xml" />
-    <item id="section-0010_html" href="section-0010.html" media-type="application/xhtml+xml" />
-    <item id="section-0011_html" href="section-0011.html" media-type="application/xhtml+xml" />
-    <item id="section-0012_html" href="section-0012.html" media-type="application/xhtml+xml" />
-    <item id="section-0013_html" href="section-0013.html" media-type="application/xhtml+xml" />
-    <item id="section-0014_html" href="section-0014.html" media-type="application/xhtml+xml" />
-    <item id="section-0015_html" href="section-0015.html" media-type="application/xhtml+xml" />
-    <item id="section-0016_html" href="section-0016.html" media-type="application/xhtml+xml" />
-    <item id="section-0017_html" href="section-0017.html" media-type="application/xhtml+xml" />
-    <item id="section-0018_html" href="section-0018.html" media-type="application/xhtml+xml" />
-    <item id="ncx" href="toc.ncx" media-type="application/x-dtbncx+xml" />
-    <item id="styles_css" href="styles.css" media-type="text/css" />
-    <item id="ClassroomElite-Vol1_FRONTGALLERY__jpg" href="ClassroomElite-Vol1_FRONTGALLERY_.jpg" media-type="image/jpeg" />
-    <item id="ClassroomElite-Vol1_FRONTGALLERY_2_jpg" href="ClassroomElite-Vol1_FRONTGALLERY_2.jpg" media-type="image/jpeg" />
-    <item id="ClassroomElite-Vol1_FRONTGALLERY_3_jpg" href="ClassroomElite-Vol1_FRONTGALLERY_3.jpg" media-type="image/jpeg" />
-    <item id="ClassroomElite-Vol1_FRONTGALLERY_4_jpg" href="ClassroomElite-Vol1_FRONTGALLERY_4.jpg" media-type="image/jpeg" />
-    <item id="ClassroomElite-Vol1_FRONTMATTER__jpg" href="ClassroomElite-Vol1_FRONTMATTER_.jpg" media-type="image/jpeg" />
-    <item id="ClassroomElite-Vol1_FRONTMATTER_2_jpg" href="ClassroomElite-Vol1_FRONTMATTER_2.jpg" media-type="image/jpeg" />
-    <item id="ClassroomElite-Vol1_FRONTMATTER_3_jpg" href="ClassroomElite-Vol1_FRONTMATTER_3.jpg" media-type="image/jpeg" />
-    <item id="ClassroomElite-Vol1_INTERIORIMAGES__jpg" href="ClassroomElite-Vol1_INTERIORIMAGES_.jpg" media-type="image/jpeg" />
-    <item id="ClassroomElite-Vol1_INTERIORIMAGES_10_jpg" href="ClassroomElite-Vol1_INTERIORIMAGES_10.jpg" media-type="image/jpeg" />
-    <item id="ClassroomElite-Vol1_INTERIORIMAGES_2_jpg" href="ClassroomElite-Vol1_INTERIORIMAGES_2.jpg" media-type="image/jpeg" />
-    <item id="ClassroomElite-Vol1_INTERIORIMAGES_3_jpg" href="ClassroomElite-Vol1_INTERIORIMAGES_3.jpg" media-type="image/jpeg" />
-    <item id="ClassroomElite-Vol1_INTERIORIMAGES_4_jpg" href="ClassroomElite-Vol1_INTERIORIMAGES_4.jpg" media-type="image/jpeg" />
-    <item id="ClassroomElite-Vol1_INTERIORIMAGES_5_jpg" href="ClassroomElite-Vol1_INTERIORIMAGES_5.jpg" media-type="image/jpeg" />
-    <item id="ClassroomElite-Vol1_INTERIORIMAGES_6_jpg" href="ClassroomElite-Vol1_INTERIORIMAGES_6.jpg" media-type="image/jpeg" />
-    <item id="ClassroomElite-Vol1_INTERIORIMAGES_7_jpg" href="ClassroomElite-Vol1_INTERIORIMAGES_7.jpg" media-type="image/jpeg" />
-    <item id="ClassroomElite-Vol1_INTERIORIMAGES_8_jpg" href="ClassroomElite-Vol1_INTERIORIMAGES_8.jpg" media-type="image/jpeg" />
-    <item id="ClassroomElite-Vol1_INTERIORIMAGES_9_jpg" href="ClassroomElite-Vol1_INTERIORIMAGES_9.jpg" media-type="image/jpeg" />
-    <item id="cover" href="CoverDesign.jpg" media-type="image/jpeg" />
-    <item id="sevenseaslogo_jpg" href="sevenseaslogo.jpg" media-type="image/jpeg" />
-  </manifest>
-  <spine toc="ncx">
-    <itemref idref="CoverPage_html" />
-    <itemref idref="toc" />
-    <itemref idref="section-0001_html" />
-    <itemref idref="section-0002_html" />
-    <itemref idref="section-0003_html" />
-    <itemref idref="section-0004_html" />
-    <itemref idref="section-0005_html" />
-    <itemref idref="section-0006_html" />
-    <itemref idref="section-0007_html" />
-    <itemref idref="section-0008_html" />
-    <itemref idref="section-0009_html" />
-    <itemref idref="section-0010_html" />
-    <itemref idref="section-0011_html" />
-    <itemref idref="section-0012_html" />
-    <itemref idref="section-0013_html" />
-    <itemref idref="section-0014_html" />
-    <itemref idref="section-0015_html" />
-    <itemref idref="section-0016_html" />
-    <itemref idref="section-0017_html" />
-    <itemref idref="section-0018_html" />
-  </spine>
-  <guide>
-    <reference type="cover" title="Cover Page" href="CoverPage.html" />
-    <reference type="toc" title="Table of Contents" href="TableOfContents.html#tableofcontents" />
-  </guide>
-</package>
+<?xml version="1.0" encoding="UTF-8" ?>
+<package xmlns="http://www.idpf.org/2007/opf" unique-identifier="BookID" version="2.0" xml:lang="en"  >
+	<metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
+		<dc:title>part 2</dc:title>
+		<dc:rights> (c) Unknown</dc:rights>
+		<dc:creator opf:role="aut">Unknown</dc:creator>
+		<dc:type>Web page</dc:type>
+		<dc:publisher>dotepub.com (http://dotepub.com)</dc:publisher>
+		<dc:source>http://dotepub.com/creator/</dc:source>
+		<dc:date opf:event="publication">2021-11-29</dc:date>
+		<dc:language>en</dc:language>
+		<dc:identifier id="BookID" opf:scheme="CustomID">dotepub-f934cc7e878aa852bd8bc96c9423cfc6</dc:identifier>
 
+	</metadata>
+	<manifest>
+		<item id="ncx" href="toc.ncx" media-type="application/x-dtbncx+xml"/>
+		<item id="estils" href="styles/dotepub.css" media-type="text/css"/>
+		<item id="logo" href="img/dotepub.png" media-type="image/png"/>
+		<item id="title" href="text/title.xhtml" media-type="application/xhtml+xml"/>
+		<item id="content" href="text/content.xhtml" media-type="application/xhtml+xml"/>
+		<item id="copy" href="text/copy.xhtml" media-type="application/xhtml+xml"/>
+
+	</manifest>
+	<spine toc="ncx" >
+		<itemref idref="title" linear="yes"/>
+		<itemref idref="content" linear="yes"/>
+		<itemref idref="copy" linear="yes"/>
+	</spine>
+	<guide>
+		<reference type="title-page" title="Title Page" href="text/title.xhtml"/>
+		<reference type="text" title="Content" href="text/content.xhtml"/>
+		<reference type="copyright-page" title="Copyright" href="text/copy.xhtml"/>
+
+	</guide>
+</package>

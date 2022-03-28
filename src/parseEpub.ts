@@ -164,7 +164,13 @@ export class Epub {
       _path = this._root + path
     }
     const file = this._zip.file(decodeURI(_path))
-    console.log('THIS', decodeURI(_path))
+    const dir = (object: any) => {
+      return Object.getOwnPropertyNames(object).filter(function (property) {
+        return typeof object[property] == 'function'
+      })
+    }
+    console.log('THIS', file)
+    console.log('THIS2', dir(file))
     if (file) {
       return file
     } else {

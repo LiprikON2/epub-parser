@@ -164,6 +164,7 @@ export class Epub {
       _path = this._root + path
     }
     const file = this._zip.file(decodeURI(_path))
+    console.log('THIS', decodeURI(_path))
     if (file) {
       return file
     } else {

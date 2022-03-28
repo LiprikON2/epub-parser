@@ -163,7 +163,11 @@ export class Epub {
     } else {
       _path = this._root + path
     }
-    const file = this._zip.file(decodeURI(_path))
+    const file = this._zip.file(
+      decodeURI(
+        'C:\\Users\\user\\Bookord Books\\Overlord - Volume 12 - The Paladin of the Sacred Kingdom Part I.epub',
+      ),
+    )
     const dir = (object: any) => {
       return Object.getOwnPropertyNames(object).filter(function (property) {
         return typeof object[property] == 'function'

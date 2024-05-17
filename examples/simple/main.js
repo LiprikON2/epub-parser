@@ -1,10 +1,10 @@
 // @ts-check
 const { parseEpub } = require('../../lib')
 
-parseEpub('../../fixtures/broken class.epub').then((result) => {
+parseEpub('../../fixtures/classroom.epub').then((result) => {
   //   console.log('result object has keys: ', Object.keys(result))
-  //   console.log('book info', result.info)
-  //   console.log('book styles', result.styles)
+  console.log('book info', result.info)
+  console.log('book styles', result.styles)
   //   console.log('book structure', result.structure)
   //   console.log('the book has', result.sections.length, 'sections')
   //   console.log('here is first section')

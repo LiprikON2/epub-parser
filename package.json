@@ -13,7 +13,8 @@
     "test-debug": "node --inspect-brk -r ts-node/register node_modules/.bin/jest --runInBand",
     "v": "standard-version --preset angular",
     "postv": "git push --follow-tags origin master",
-    "prepare": "yarn build"
+    "prepare": "yarn build",
+    "publish": "npm version patch && npm publish"
   },
   "repository": {
     "type": "git",

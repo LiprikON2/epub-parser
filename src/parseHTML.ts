@@ -5,7 +5,7 @@ import { HtmlNodeObject, GeneralObject } from './types'
 
 const OMITTED_TAGS = ['input', 'textarea', 'script']
 const UNWRAP_TAGS = ['body', 'html']
-const PICKED_ATTRS = ['href', 'src', 'id', 'style', 'class', 'hidden', 'alt', 'title']
+const PICKED_ATTRS = ['href', 'xlink:href', 'src', 'id', 'style', 'class', 'hidden', 'alt', 'title']
 
 /**
  * recursivelyReadParent

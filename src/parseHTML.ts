@@ -5,7 +5,16 @@ import { HtmlNodeObject, GeneralObject } from './types'
 
 const OMITTED_TAGS = ['input', 'textarea', 'script']
 const UNWRAP_TAGS = ['body', 'html']
-const PICKED_ATTRS = ['href', 'xlink:href', 'src', 'id', 'style', 'class', 'hidden', 'alt', 'title']
+const PICKED_ATTRS = ['href', 'src', 'id', 'style', 'class', 'hidden', 'alt', 'title']
+const REPLACE = [
+  {
+    tag: { from: 'image', to: 'img' },
+    attrs: [
+      { from: 'xlink:href', to: 'src' },
+      { from: 'href', to: 'src' },
+    ],
+  },
+]
 
 /**
  * recursivelyReadParent
@@ -53,7 +62,7 @@ const parseHTML = (HTMLString: string, config: ParseHTMLConfig = {}) => {
     },
     transformer(node, children) {
       if (node.nodeType === 1) {
-        const tag = node.tagName.toLowerCase()
+        let tag = node.tagName.toLowerCase()
         const attrs: GeneralObject = {}
 
         if (OMITTED_TAGS.indexOf(tag) !== -1) {
@@ -64,6 +73,26 @@ const parseHTML = (HTMLString: string, config: ParseHTMLConfig = {}) => {
           return children.length === 1 ? children[0] : children
         }
 
+        const replacement = REPLACE.find((replacement) => replacement.tag.from === tag)
+        if (replacement) {
+          tag = replacement.tag.to
+
+          if (node.attributes.length) {
+            for (let i = 0; i < node.attributes.length; i++) {
+              const attr = node.attributes[i]
+              if (attr.specified) {
+                const attrReplacement = replacement.attrs.find(
+                  (attrReplacement) => attrReplacement.from === attr.name,
+                )
+                if (attrReplacement) {
+                  node.setAttribute(attrReplacement.to, attr.value)
+                  node.removeAttribute(attr.name)
+                }
+              }
+            }
+          }
+        }
+
         PICKED_ATTRS.forEach((attr) => {
           let attrVal = node.getAttribute(attr) || undefined
           if (attrVal && attr === 'href' && tag !== 'link' && resolveHref) {
@@ -72,7 +101,7 @@ const parseHTML = (HTMLString: string, config: ParseHTMLConfig = {}) => {
           if (attrVal && attr === 'href' && tag === 'link' && resolveCSS) {
             attrVal = resolveCSS(attrVal)
           }
-          if (attrVal && (attr === 'src' || attr === 'xlink:href') && resolveSrc) {
+          if (attrVal && attr === 'src' && resolveSrc) {
             attrVal = resolveSrc(attrVal)
           }
           attrs[attr] = attrVal

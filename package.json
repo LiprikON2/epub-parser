@@ -14,7 +14,7 @@
     "v": "standard-version --preset angular",
     "postv": "git push --follow-tags origin master",
     "prepare": "yarn build",
-    "publish": "npm version patch && npm publish"
+    "upload": "npm version patch && npm publish"
   },
   "repository": {
     "type": "git",

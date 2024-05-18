@@ -72,7 +72,7 @@ const parseHTML = (HTMLString: string, config: ParseHTMLConfig = {}) => {
           if (attrVal && attr === 'href' && tag === 'link' && resolveCSS) {
             attrVal = resolveCSS(attrVal)
           }
-          if (attrVal && attr === 'src' && resolveSrc) {
+          if (attrVal && (attr === 'src' || attr === 'xlink:href') && resolveSrc) {
             attrVal = resolveSrc(attrVal)
           }
           attrs[attr] = attrVal
